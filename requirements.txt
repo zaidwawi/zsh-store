@@ -24,9 +24,6 @@ pypiwin32==223
 PyRect==0.1.4
 PyScreeze==0.1.28
 python-dateutil==2.8.2
-pytweening==1.0.4
-pywin32==302
-pywin32-ctypes==0.2.0
 PyYAML==6.0
 pyzbar==0.1.8
 SQLAlchemy==1.4.27
