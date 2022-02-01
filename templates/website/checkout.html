@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% block title %}
+checkout || cart
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="cart-section" id="cart-section">
+        <div class="section-section-one">
+            <div class="cart-container">
+                <div class="table-section">
+                    <table class="my-table">
+                        <tbody style="">
+                            {% for item in products.items %}
+                            
+                                <tr class="all-tr">
+                                    <td class="image-td">
+                                        <a href="/products/{{item.products_id}}">
+                                            <div class="item-name">
+                                                {{item.products_name.split(' ')[0]}}..... 
+                                            </div>
+                                        </a>
+                                        <img src="/static/products_image/{{item.main_img}}" alt="">
+                                    </td>
+                                    <td>
+                                        <div class="item-category">
+                                            category
+                                        </div>
+                                        <br>
+                                        <span>{{item.category}}</span>
+                                    </td>
+                                    <td>
+                                        <div class="quantityss">quantity</div><br>
+                                        <span>{{item.products_quantity}}</span>
+                                    </td>
+                                    <td>
+                                        <div class="price-each">price</div><br>
+                                        <span>{{item.product_price}} AED</span>
+                                    </td>
+                                    <td>
+                                        <div class="total-amount-cart">
+                                            total
+                                        </div>
+                                        <br>
+                                        <span>{{item.total}} AED</span>
+                                    </td>
+                                    <td>
+                                        <br>
+                                        <span>
+                                            <a href="/delete/remove/{{item.id}}" class="btn btn-danger">remove</a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="section-section-2">
+                <div class="checkout-in-cart-section">
+                    <div class="chek-title">
+                        checkout
+                    </div>
+                    <div class="shipping-span cont-21">
+                        {% if shipp == true %}
+                          <span><em>shipping:  </em>Free !!</span> <span class="dili"><i class="fas fa-truck"></i ><span>2 - 3 days</span></span>  
+                        {% else %}
+                        <span><em>shipping:  </em>10</span> AED <span class="dili"><i class="fas fa-truck"></i ><span>free over 50 AED</span></span>  
+                        {% endif %}
+                    </div>
+                    <div class="shipping-span">
+                        
+                        {% if shipp == false %}
+                        Estimated Item cost : <span>{{total_money}} </span>AED
+                        {% else %}
+                        Estimated Item cost : <span>{{total_money}} </span>AED
+                        {% endif %}
+                    </div>
+
+                    <div class="shipping-span">
+                        total :  <span> {{total}} </span>AED
+                    </div>
+
+                    <hr>
+
+                    <div class="shipping-span">
+                        {% if shipp %}
+                        You are <span>{{away}} AED</span> away from free shipping !
+                        {% else %}
+                        You are <span>{{away}} AED</span> away from free shipping !
+                        {% endif %}
+                    </div>
+                    <div class="checkout-btn-one">
+                        <a href="#confirm-payment">checkout</a>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+    <hr>
+
+    <div class="confirm-payment" id="confirm-payment">
+        <br>
+        <br>
+        
+        <div class="confirm-payment-title" style="margin-top: 50px;">
+            <h2 style=" text-align: center;">Confirm payment</h2>
+        </div>
+
+        <div class="all-container-contain">
+            <div class="form-confirm">
+                <form action="/add/pay" method="POST">
+                    <div class="group-form-mine">
+                        <label for="first-name">Your first name </label>
+                        <input type="text" name="first-name" id="first-name">
+                    </div>
+                    <br>
+    
+                    <div class="group-form-mine">
+                        <label for="last-name">Your last name </label>
+                        <input type="text" name="last-name" id="last-name">
+                    </div>
+                    <br>
+    
+                    <div class="group-form-mine">
+                        <label for="address">Your address</label>
+                        <input type="text" name="address1" id="address">
+                    </div>
+                    <br>
+    
+                    <div class="group-form-mine">
+                        <label for="landmark">Places near you</label>
+                        <input type="text" name="addres2" id="landmark">
+                    </div>
+                    <br>
+    
+                    <div class="group-form-mine">
+                        <label for="phone-number">Your phone number</label>
+                        <input type="number" name="phone-number" id="phone-number" value="971">
+                    </div>
+                    <br>
+    
+                    <div class="group-form-mine">
+                        <label for="whats-num">Your whatsapp number</label>
+                        <input type="number" name="whatsapp-number" id="whats-num" value="971">
+                    </div>
+                    <br>
+    
+                    <div class="group-form-mine">
+                        <label for="Notes">Extra Note </label>
+                        <textarea style="resize: none;" name="decri" id="1" cols="30" rows="10" itemid="Notes"></textarea>
+                    </div>
+    
+                </form>
+                <div class="place-order">
+      
+                    <div class="place-order-btn">
+                        <button> place order</button>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+ {% endblock %}

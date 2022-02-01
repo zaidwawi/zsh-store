@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+Orders
+{% endblock %}
+
+{% block content %}
+<div class="container" style="display: flex; margin-top:200px; margin-bottom:5px;;flex-wrap:wrap; justify-content:center;" >
+    {% for order in orders %}
+
+    <div class="card" style="width: 18rem; margin:5px;box-shadow: 1px 5px 6px 1px #333;"  >
+        <div class="card-body">
+        <h5 class="card-title">{{order.costumer_name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{order.costumer_phone}}</h6>
+        <p class="card-text">{{order.notes}}</p>
+        <a href="/view/admin/{{order.user_id}}/{{order.id}}" class="card-link">View order</a>
+        <a href="/view/admin/costumer/{{order.user_id}}/{{order.id}}" class="card-link">View costumer</a>
+        </div>
+        <form action="/dele/{{order.user_id}}/{{order.id}}" >
+            <button class="btn btn-danger form-control">deleviry </button>
+        </form>
+    </div>
+
+   
+{% endfor %}
+
+</div>
+
+{% endblock %}

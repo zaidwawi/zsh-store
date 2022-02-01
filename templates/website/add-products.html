@@ -1,0 +1,37 @@
+{% extends 'order-base.html' %}
+{% block title %}
+Order admin
+{% endblock %}
+
+{% block content %}
+
+
+  <body>
+    <div class="main-block">
+      <h1 style="color: black;">Order Form</h1>
+      <form action="/add/admin" method="POST" enctype="multipart/form-data">
+        <div class="info">
+          <input class="fname" type="text" name="productName" placeholder="Products name">
+          <input class="price" type="text" name="productPrice" placeholder="Products price">
+          <input type="number" class="price" name="productQan" placeholder="Products quantity">
+          <input type="text" name="describtion1" placeholder="products desc 1">
+          <input type="text" name="describtion2" placeholder="products desc 2">
+          <input type="file" name="imageMain" placeholder="Main Image">
+          <input type="file" name="imageOne" placeholder="products image 2">
+          <input type="file" name="imageTwo" placeholder="products image 2">
+
+          <select style="width: 100%;" name="category">
+            <option value="number" disabled selected>Category</option>
+            <option value="console">console</option>
+            <option value="pc">pc</option>
+            <option value="phone">phone</option>
+            <option value="accessory">accessory</option>
+          </select>
+          <br>
+        <div class="button">
+          <button class="button">Upload</button>
+        </div>
+      </form>
+    </div>
+
+{% endblock %}

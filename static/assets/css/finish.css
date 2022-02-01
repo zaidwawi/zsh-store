@@ -1,0 +1,53 @@
+.section-finishes{
+    height:100vh;
+}
+.finish-suc{
+    margin-top: 200px;
+}
+.finish-suc h2{
+    text-align: center;
+    font-size: 2.5em;
+    text-transform: uppercase
+}
+.finish-suc h2::first-letter{
+    font-size: 2.4em;
+
+}
+.finish-contains{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.finish-contains .user-info div span{
+  
+    font-weight: 700;
+    font-size: 1.2em;
+}
+.finish-contains div{  padding: 5px 10px;}
+.cont-cont-finish{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.button-user-finish form span{
+    font-weight: 600;
+}
+.button-user-finish form span em{
+    color: red;
+}
+
+@media (max-width:959px){
+    .section-finishes{
+        height: 100vh;
+    }
+}
+@media (max-width:662px){
+    .finish-contains{
+        width: 100%;
+    }
+}
+@media (max-height:713px){
+    .finish-contains{
+        height: 120vh;
+    }
+}

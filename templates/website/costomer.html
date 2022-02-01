@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+user_id
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 200px; margin-bottom:50px; ;display:flex; justify-content:center;" >
+    {% for cos in orders %}
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{cos.costumer_name }}</li>
+          <li class="list-group-item">{{cos.coustmer_email}}</li>
+          <li class="list-group-item">phone : {{cos.costumer_phone}}</li>
+          <li class="list-group-item">whatsNumber : {{cos.costumer_whats_phone}}</li>
+          <li class="list-group-item">address: {{cos.address}}</li>
+          <li class="list-group-item">landmark : {{cos.landmark}}</li>
+          <li class="list-group-item">time: {{cos.time}}</li>
+          <li class="list-group-item">notes: {{cos.notes}}</li>
+        </ul>
+      </div>
+
+      {% endfor %}
+</div>
+
+{% endblock %}

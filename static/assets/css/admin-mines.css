@@ -1,0 +1,108 @@
+    body{
+      background: linear-gradient(90deg, rgb(168, 168, 168), rgb(209, 209, 209));
+    }
+    body, .main-block input, .main-block select { 
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 16px;
+    }
+    .main-block h1, .main-block h3 {
+    font-weight: 400;
+    }
+    .main-block h1 {
+    font-size: 32px;
+    }
+    .main-block h3 {
+    color: #1c87c9;
+    }
+    .main-block, .info {
+    display: flex;
+    flex-direction: column;
+    }
+    .main-block {
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    min-height: 100%;
+    background-size: cover;
+    }
+    .main-block  form {
+    width: 80%; 
+    padding: 25px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 50px;
+    margin-top: 200px;
+    }
+    .main-block  input:focus{
+      border-radius: 10px;
+      border: 1px solid white;
+      background: rgba(255, 255, 255, 0.7);
+      color: black;
+    }
+    .main-block  input{
+      color: white;
+    }
+    .main-block  input, .main-block  select {
+    padding: 5px;
+    margin-bottom: 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #eee;
+    }
+    .main-block  input::placeholder {
+    color: #eee;
+    }
+    .main-block  option {
+    background: black; 
+    border: none;
+    }
+    .metod {
+    display: flex; 
+    }
+    .main-block  select{
+      color: #eee;
+    }
+    .main-block  button {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    margin: 20px auto 0;
+    border: none;
+    border-radius: 5px; 
+    background: #1c87c9; 
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    }
+    .main-block  a:hover {
+    background: #095484;
+    }
+    .main-block  @media (min-width: 568px) {
+    .main-block  .info {
+    flex-flow: row wrap;
+    justify-content: space-between;
+    }
+    .main-block input {
+      padding: 20px 10px;
+    }
+    .main-block select {
+    width: 48%;
+    }
+    }
+    .main-block input{
+      width: 100%;
+    }
+    .main-block a{
+      text-align: center;
+      padding: 10px 10px;
+      font-weight: 900;
+      color: #eee;
+      text-decoration: none;
+    }
+    .main-block .button{
+      justify-content: center;
+      align-items: center;
+    }

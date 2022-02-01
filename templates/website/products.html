@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %} products {% endblock %}
+
+
+{% block content %}
+
+    <div class="page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <span>Search Products</span>
+                        <form action="/results" style="margin-top: 10px;" method="POST">
+                            <div class="row" style="display: flex; align-items:center">
+                                <div class="col col-lg-11">
+                                    <input type="text" class="form-control" name="search"> 
+                                </div>
+                                <div class="col-lg-1">
+                                    <span ><button class="searchButton m-3" ><i class="fas fa-search"></i></button></span>
+                                </div>
+                            </div>
+                            
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+
+    <!-- ***** Products Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Our Latest Products</h2>
+                        <span>Check out all of our products.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for item in products.items %}
+                <div class="col-lg-4 ">
+                    <div class="item" style="margin:5px;">
+                        <div class="thumb">
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a href="/products/{{item.id}}"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="/add/cart/{{item.id}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            
+                            <img src="static/products_image/{{item.main_img}}" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>{{item.products_name}}</h4>
+                            <span>${{item.product_price}}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="col-lg-12">
+                    <div class="pagination">
+                        <ul>
+                            {% for item in products.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                                {% if item %}
+                                {% if products.page == item %}
+                                    <li class="active">
+                                        <a  href="?page={{item}}">{{item}}</a>
+                                    </li>
+                                {% else %}
+                                <li class="">
+                                    <a  href="?page={{item}}">{{item}}</a>
+                                </li>
+                                {% endif %}
+                                {% else %}
+                                ...
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- ***** Products Area Ends ***** -->
+    
+{% endblock %}

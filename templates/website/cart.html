@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% block title  %}
+
+Cart
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container cart-containers">
+
+	<h1>Shopping Cart</h1>
+
+	<div class="cart">
+
+		<div class="products">
+
+			{% for item in products %}
+
+			<div class="product">
+
+				<img src="/static/products_image/{{item.main_img}}">
+
+				<div class="product-info">
+
+					<a href="/products/{{item.products_id}}"><h3 class="product-name">{{item.products_name.split(' ')[0]}}..... </h3></a>
+
+					<h4 class="product-price">AED {{item.total}}</h4>
+
+					<h4 class="product-offer">{{item.category}}</h4>
+
+					<p class="product-quantity">Qnt: <span>{{item.products_quantity}}</span>
+
+					
+
+						
+
+						<a href="/delete/remove/{{item.id}}" class="product-remove"><i class="fa fa-trash" aria-hidden="true"></i>Remove</a>
+
+				
+
+				</div>
+
+			</div>
+			{% endfor %}
+			
+
+		</div>
+
+		<div class="cart-total">
+
+			<p>
+
+				<span>shipping</span>
+				{% if shipp == false %}
+				<span style="color: red">10 AED</span>
+				{% else %}
+				<span>Free</span>
+				{% endif %}
+
+			</p>
+
+			<p>
+
+				<span>Total Price</span>
+
+				<span>{{total}} AED</span>
+
+			</p>
+
+
+
+			<p>
+				{% if shipp == false %}
+				
+				<span style="font-size: 15px;">{{away}} AED Remain for free shipping</span>
+
+	
+				{% endif %}
+				
+			
+
+			</p>
+
+			<a href="#confirm-payment">Proceed to Checkout</a>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+<div class="confirm-payment" id="confirm-payment">
+	<br>
+	<br>
+	
+	<div class="confirm-payment-title" style="margin-top: 50px;">
+		<h2 style=" text-align: center;">Confirm payment</h2>
+	</div>
+
+	<div class="all-container-contain">
+		<div class="form-confirm">
+			<form action="/carts/pay" method="POST">
+				<div class="group-form-mine">
+					<label for="first-name">Your first name </label>
+					<input type="text" name="first-name" id="first-name">
+				</div>
+				<br>
+
+				<div class="group-form-mine">
+					<label for="last-name">Your last name </label>
+					<input type="text" name="last-name" id="last-name">
+				</div>
+				<br>
+
+				<div class="group-form-mine">
+					<label for="address">Your address</label>
+					<input type="text" name="address1" id="address">
+				</div>
+				<br>
+
+				<div class="group-form-mine">
+					<label for="landmark">Places near you</label>
+					<input type="text" name="addres2" id="landmark">
+				</div>
+				<br>
+
+				<div class="group-form-mine">
+					<label for="phone-number">Your phone number</label>
+					<input type="number" name="phone-number" id="phone-number" value="971">
+				</div>
+				<br>
+
+				<div class="group-form-mine">
+					<label for="whats-num">Your whatsapp number</label>
+					<input type="number" name="whatsapp-number" id="whats-num" value="971">
+				</div>
+				<br>
+
+				<div class="group-form-mine">
+					<label for="Notes">Extra Note </label>
+					<textarea style="resize: none;" name="note" id="1" cols="30" rows="10" itemid="Notes"></textarea>
+				</div>
+
+			
+			<div class="place-order">
+				<div>
+					<a class="total-amount-check" href="#cart-section">Total amount</a>
+				</div>
+				<div class="place-order-btn">
+				<button>place order</button>
+				</div>
+			</div>
+			
+		</form>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

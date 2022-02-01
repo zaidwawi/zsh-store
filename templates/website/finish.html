@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+    order complete !
+{% endblock %}
+
+    
+<!--
+
+TemplateMo 571 Hexashop
+
+https://templatemo.com/tm-571-hexashop
+
+-->
+
+
+{% block content %}
+
+    <section class="section-finishes">
+
+        <div class="finish-suc">
+            <h2>Your Order has been sent successfully !!</h2>
+        </div>
+
+     <div class="cont-cont-finish">
+        <div class="finish-contains">
+            <div class="user-info">
+                <div>
+                    <span>name :</span> {{name}}
+                </div>
+                <div>
+                    <span>email :</span> {{email}}
+                </div>
+                <div>
+                    <span>address :</span> {{address}}
+                </div>
+                <div>
+                    <span>place near you :</span> {{landmark}} 
+                </div>
+                <div>
+                    <span>phone number :</span> {{phone}}
+                </div>
+                <div>
+                    <span>whatsapp number :</span> {{whats}}
+                </div>
+                <div>
+                    <span>Time : </span> {{time}}
+                </div>
+                <br>
+                <div>
+                    <span>note : </span> {{note}}
+                </div>
+            </div>
+            
+
+            <div class="button-user-finish">
+                <form action="">
+                    <button class="btn btn-primary">Your order Pdf</button> <span>This pdf is important ! <em>download it</em></span>
+                </form>
+            </div>
+        </div>
+     </div>
+
+
+    </section>
+
+
+{% endblock %}

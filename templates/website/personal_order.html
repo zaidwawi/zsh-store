@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Personal order
+{% endblock %}
+
+{% block content %}
+<div class="containers" style="margin-top:200px; margin-bottom:50px; display:flex; flex-wrap:wrap; justify-content:center;">
+    {% for order in orders %}
+    <div class="card" style="width: 18rem; margin:10px;">
+        <img src="/static/products_image/{{order.products_img}}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">{{order.products_name}}</h5>
+        <p class="card-text">pc</p>
+        </div>
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{order.products_price}} AED</li>
+        <li class="list-group-item">{{order.products_quantity}}</li>
+        <li class="list-group-item">{{order.item_total}} AED</li>
+        </ul>
+    </div>
+{% endfor %}
+
+</div>
+<br>
+
+<div class="container">
+    <h2 style="text-align: center; margin-top: 30px; margin-bottom:30px;">total : {{total}}</h2>
+</div>
+{% endblock %}
