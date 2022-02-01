@@ -1,4 +1,3 @@
-from turtle import pd
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, redirect , render_template, request, jsonify, url_for, make_response
@@ -11,7 +10,6 @@ from flask_login import (
     logout_user,
     current_user
 )
-import pdfkit
 from datetime import datetime
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
