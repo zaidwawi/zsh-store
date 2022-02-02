@@ -35,8 +35,6 @@ class User(db.Model, UserMixin):
     is_Admin = Column(Boolean(), default = False)
     status = Column(Boolean(), default=False) # if buy = True to filter 
     checkout = db.relationship("checkout")
-    carts = db.relationship('carts')
-    order = db.relationship('order')
 
 ################### products model #######################
 class Products(db.Model):
@@ -51,7 +49,6 @@ class Products(db.Model):
     img_two = Column(String())
     describtion_one = Column(String())
     describtion_two = Column(String())
-    the_cart = db.relationship('carts')
     
 
     def  insert( self ):
@@ -82,8 +79,6 @@ class carts(db.Model):
     total = Column(Integer)
     category = Column(String())
     main_img = Column(String())
-    products_id = Column(Integer, ForeignKey('products.id'))
-    user_id = Column(Integer, ForeignKey('user.id'))
 
     def  insert( self ):
         db.session.add(self)
@@ -109,7 +104,6 @@ class checkout(db.Model):
     time = Column(String())
     notes = Column(String())
     user_id = Column(Integer, ForeignKey('user.id'))
-    products_id = db.relationship('order', backref = 'parent')
 
 class order(db.Model):
     id = Column(Integer, primary_key = True)
@@ -119,8 +113,6 @@ class order(db.Model):
     products_quantity = Column(String())
     item_total = Column(String())
     all_total = Column(String())
-    user_id = Column(Integer, ForeignKey('user.id'))
-    checkout_id = Column(Integer, ForeignKey('checkout.id'))
 
     def  insert( self ):
         db.session.add(self)
