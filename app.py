@@ -199,8 +199,7 @@ def create_app(test_config=None):
             total = total,
             category = category,
             main_img = main_img,
-            user_id = current_user.id,
-            products_id = id
+            user_id = current_user.id
         )
         db.session.add(add_cart)
         db.session.commit()
@@ -227,8 +226,7 @@ def create_app(test_config=None):
             total = total,
             category = category,
             main_img = main_img,
-            user_id = current_user.id,
-            products_id = id
+            user_id = current_user.id
         )
         db.session.add(add_cart)
         db.session.commit()
@@ -308,8 +306,7 @@ def create_app(test_config=None):
                 products_quantity = items.products_quantity,
                 item_total = total,
                 all_total = all_total,
-                user_id = current_user.id,
-                checkout_id = checkouts.id
+                user_id = current_user.id
             )
             db.session.add(orders)
             db.session.commit()
@@ -444,54 +441,11 @@ def create_app(test_config=None):
         else:
             return redirect(url_for('login'))
 
-    @login_required
-    @app.route('/view/admin/<int:user_id>/<int:product_id>')
-    def get_order_info(user_id, product_id):
-        if current_user.is_authenticated:
-            if current_user.is_Admin:
-                get_order = order.query.filter_by(user_id = user_id, checkout_id = product_id).all()
-                all_total = order.query.filter_by(user_id = user_id, checkout_id = product_id).first().all_total
-                return render_template('website/personal_order.html', user = current_user, orders = get_order, total =all_total)
-            else:
-                return redirect(url_for('home'))
-        else:
-            return redirect(url_for('login'))
     
-
-    @login_required
-    @app.route('/view/admin/costumer/<int:user_id>/<int:checkout_id>')
-    def get_order_infos(user_id, checkout_id):
-        if current_user.is_authenticated:
-            if current_user.is_Admin:
-                get_order = checkout.query.filter_by(user_id = user_id, id = checkout_id).all()
-                return render_template('website/costomer.html', user = current_user, orders = get_order)
-            else:
-                return redirect(url_for('home'))
-        else:
-            return redirect(url_for('login'))
-
-    @login_required
-    @app.route('/dele/<int:user_id>/<int:checkout_id>', methods = ['POST', 'GET'])
-    def dele_out(user_id, checkout_id):
-        if current_user.is_authenticated:
-            if current_user.is_Admin:
-                get_order = order.query.filter_by(user_id = user_id, checkout_id = checkout_id).all()
-                for i in get_order:
-                    i.delete()
-              
-                db.session.query(checkout).filter_by(id=checkout_id, user_id = user_id).delete()
-                db.session.commit()
-                flash('delete')
-                return redirect(url_for('home'))
-            else:
-                return redirect(url_for('home'))
-        else:
-            return redirect(url_for('home'))
 
     @app.route('/deleteall')
     def delete():
-        
-
+       
         flash('done')
         return redirect(url_for('home'))
 
